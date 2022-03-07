@@ -1,7 +1,7 @@
 @extends("layouts.client")
 
 @section("title")
-    @parent | {{ $restaurant->name }}
+    Vlogo | {{ $restaurant->name }}
 @endsection
 
 @section("content")

@@ -1,7 +1,7 @@
 @extends("layouts.client")
 
 @section("title")
-    @parent | Author
+    Vlogo | Author
 @endsection
 
 @section("content")

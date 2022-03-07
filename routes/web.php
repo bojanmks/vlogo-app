@@ -40,7 +40,7 @@ Route::middleware('isLoggedIn')->group(function() {
 Route::prefix('/admin')->name('admin.')->middleware(['isLoggedIn', 'isAdmin'])->group(function() {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', function() {
-        return redirect()->route('dashboard');
+        return redirect()->route('admin.dashboard');
     });
     Route::resource('/users', \App\Http\Controllers\UserController::class, ['except' => ['show']]);
     Route::get('/restaurants', [\App\Http\Controllers\AdminController::class, 'restaurants'])->name('restaurants');

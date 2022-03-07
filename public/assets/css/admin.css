@@ -1,0 +1,51 @@
+.user-panel a {
+  cursor: default;
+}
+
+td {
+  vertical-align: middle !important;
+}
+
+.large-column {
+  min-width: 170px;
+}
+
+.standard-form {
+  width: 500px;
+}
+@media screen and (max-width: 767px) {
+  .standard-form {
+    width: 100%;
+  }
+}
+
+.border-incorrect {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+#actionsForm {
+  width: 600px;
+}
+@media screen and (max-width: 991px) {
+  #actionsForm {
+    width: 100%;
+  }
+}
+
+.restaurant-image {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.food-image {
+  width: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*# sourceMappingURL=admin.css.map */

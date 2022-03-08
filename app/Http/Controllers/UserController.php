@@ -61,6 +61,8 @@ class UserController extends AdminController
                 $request->get('role')
             );
 
+            $this->logAction("Admin created the " . $request->get('username') . " user.", $request);
+
             return redirect()->route('admin.users.index')->with('messages', ['User ' . $request->get('username') . ' was created successfully.']);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -109,6 +111,8 @@ class UserController extends AdminController
                 $request->get('role')
             );
 
+            $this->logAction("Admin updated the " . $request->get('username') . " user.", $request);
+
             if(session()->get('user')->id == $id)
                 session()->remove('user');
 
@@ -130,6 +134,8 @@ class UserController extends AdminController
     {
         try {
             $this->userModel->myDelete($id);
+
+            $this->logAction("Admin deleted a user.", request());
 
             if(session()->get('user')->id == $id)
                 session()->remove('user');

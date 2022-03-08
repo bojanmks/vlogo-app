@@ -54,6 +54,8 @@ class FoodCategoryController extends AdminController
         try {
             $this->foodCategoryModel->insert($request->get('name'), $request->has('listed'));
 
+            $this->logAction("Admin created the " . $request->get('name') . " food category.", $request);
+
             return redirect()->route('admin.categories.index')->with('messages', ["Category " . $request->get('name') . " was created successfully."]);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -96,6 +98,8 @@ class FoodCategoryController extends AdminController
         try {
             $this->foodCategoryModel->myUpdate($id, $request->get('name'), $request->has('listed'));
 
+            $this->logAction("Admin updated the " . $request->get('name') . " food category.", $request);
+
             return redirect()->route('admin.categories.index')->with('messages', ['Category was changed successfully.']);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -114,6 +118,8 @@ class FoodCategoryController extends AdminController
     {
         try {
             $this->foodCategoryModel->myDelete($id);
+
+            $this->logAction("Admin deleted a food category.", request());
 
             return redirect()->route('admin.categories.index')->with('messages', ["Category was deleted successfully."]);
         } catch(\Exception $ex) {

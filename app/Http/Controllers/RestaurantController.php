@@ -163,6 +163,8 @@ class RestaurantController extends ClientController
                 $request->has('active')
             );
 
+            $this->logAction("Admin created the " . $request->get('name') . " restaurant.", $request);
+
             return redirect()->route('admin.restaurants')->with('messages', ['Restaurant ' . $request->get('name') . ' was created successfully.']);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -233,6 +235,8 @@ class RestaurantController extends ClientController
                 $imageName
             );
 
+            $this->logAction("Admin updated the " . $request->get('name') . " restaurant.", $request);
+
             return redirect()->route('admin.restaurants')->with('messages', ['Restaurant was updated successfully.']);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -251,6 +255,8 @@ class RestaurantController extends ClientController
     {
         try {
             $this->restaurantModel->myDelete($id);
+
+            $this->logAction("Admin deleted a restaurant.", request());
 
             return redirect()->route('admin.restaurants')->with('messages', ['Restaurant was deleted successfully.']);
         } catch(\Exception $ex) {

@@ -78,6 +78,8 @@ class FoodController extends AdminController
                 round($request->get('price'), 2)
             );
 
+            $this->logAction("Admin created the " . $request->get('name') . " food.", $request);
+
             return redirect()->route('admin.food.index')->with('messages', ['Food ' . $request->get('name') . ' was created successfully.']);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -140,6 +142,8 @@ class FoodController extends AdminController
                 $imageName
             );
 
+            $this->logAction("Admin updated the " . $request->get('name') . " food.", $request);
+
             return redirect()->route('admin.food.index')->with('messages', ['Food was updated successfully.']);
         } catch(\Exception $ex) {
             $uniqueId = uniqid();
@@ -158,6 +162,8 @@ class FoodController extends AdminController
     {
         try {
             $this->foodModel->myDelete($id);
+
+            $this->logAction("Admin deleted a food.", request());
 
             return redirect()->route('admin.food.index')->with('messages', ['Food was deleted successfully.']);
         } catch(\Exception $ex) {

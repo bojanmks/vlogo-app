@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentHeader')
-    <h1>Food</h1>
+    <h1>Actions</h1>
 @endsection
 
 @section('content')

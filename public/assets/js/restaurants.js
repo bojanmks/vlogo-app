@@ -82,7 +82,7 @@ $(document).ready(() => {
 
         for(let i = 0; i < lastPage; i++) {
             const activeClass = i + 1 === currentPage ? 'active' : '';
-            html += `<li class="page-item ${activeClass}"><a href='#' class="page-link" data-page='${i + 1}'>${i + 1}</a></li>`;
+            html += `<li class="page-item ${activeClass}"><a href='#' class="page-link number-link" data-page='${i + 1}'>${i + 1}</a></li>`;
         }
 
         html += `<li class='page-item ${disabledNext}'><a href='#' class='page-link pagination-next'><i class='fas fa-caret-right'></i></a></li></ul>`;
@@ -96,7 +96,7 @@ $(document).ready(() => {
             e.preventDefault();
         });
 
-        $('.page-link').click(function() {
+        $('.page-link.number-link').click(function() {
             const currentPage = $('.page-item.active .page-link').data('page');
             const page = $(this).data('page');
 
@@ -117,12 +117,12 @@ $(document).ready(() => {
 
         $('.pagination-next').click(function() {
             const currentPage = $('.page-item.active .page-link').data('page');
-            const numberOfPages = $('.page-link').length;
+            const numberOfPages = $('.page-link').length - 2;
 
             if(currentPage >= numberOfPages)
                 return;
 
-            getRestaurants(currentPage + 1);
+            getRestaurants(parseInt(currentPage) + 1);
         });
     }
 });

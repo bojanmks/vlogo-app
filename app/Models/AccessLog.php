@@ -19,6 +19,7 @@ class AccessLog extends Model
     public function getUniqueVisitors() {
         return \DB::table('access_log')
             ->distinct('ip')
+            ->where('created_at', '>=', now()->toDateTimeString())
             ->count();
     }
 }
